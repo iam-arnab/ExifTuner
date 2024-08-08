@@ -1,5 +1,9 @@
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import DateTimeForm from "@/components/ui/dateTimeForm";
+import LocationForm from "@/components/ui/locationForm";
+import CameraForm from "@/components/ui/cameraForm";
+import ImageForm from "@/components/ui/imageForm";
 
 export default function Home() {
   return (
@@ -9,14 +13,23 @@ export default function Home() {
       </div>
       <div className="flex items-center justify-center h-screen">
         <Tabs defaultValue="d&t">
-          <TabsList>
-            <TabsTrigger value="d&t">Date & Time</TabsTrigger>
-            <TabsTrigger value="location">Location</TabsTrigger>
-            <TabsTrigger value="camera">Camera</TabsTrigger>
-          </TabsList>
-          <TabsContent value="d&t">Make changes to date and time</TabsContent>
-          <TabsContent value="location">Make changes to location</TabsContent>
-          <TabsContent value="camera">Make changes to camera</TabsContent>
+          <ImageForm />
+          <div className="m-2">
+            <TabsList>
+              <TabsTrigger value="d&t">Date & Time</TabsTrigger>
+              <TabsTrigger value="location">Location</TabsTrigger>
+              <TabsTrigger value="camera">Camera</TabsTrigger>
+            </TabsList>
+            <TabsContent value="d&t">
+              <DateTimeForm />
+            </TabsContent>
+            <TabsContent value="location">
+              <LocationForm />
+            </TabsContent>
+            <TabsContent value="camera">
+              <CameraForm />
+            </TabsContent>
+          </div>
         </Tabs>
       </div>
     </main>
