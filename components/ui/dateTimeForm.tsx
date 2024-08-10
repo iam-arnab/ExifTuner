@@ -16,12 +16,18 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { modifyDateTimeData } from "@/lib/modifyExif";
+import fileNameExtract from "@/lib/fileNameExtract";
+import downloadImage from "@/lib/downloadImage";
 
-export default function DateTimeForm() {
+interface DateTimeFormProps {
+    dataUrl: string;
+}
+
+export default function DateTimeForm({ dataUrl }: DateTimeFormProps) {
     const form = useForm<z.infer<typeof DateTimeSchema>>({
         resolver: zodResolver(DateTimeSchema),
         defaultValues: {
-            modifyDate: "",
             dateTimeOriginal: "",
             createDate: "",
         },
@@ -29,27 +35,17 @@ export default function DateTimeForm() {
 
     function onSubmit(values: z.infer<typeof DateTimeSchema>) {
         console.log(values);
+        const modifiedImage = modifyDateTimeData(
+            dataUrl,
+            values.dateTimeOriginal,
+            values.createDate
+        );
+        downloadImage(modifiedImage, fileNameExtract(dataUrl));
     }
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormField
-                    control={form.control}
-                    name="modifyDate"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Last Modified Date</FormLabel>
-                            <FormControl>
-                                <Input placeholder="" {...field} />
-                            </FormControl>
-                            <FormDescription>
-                                Last modified date of the file.
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
                 <FormField
                     control={form.control}
                     name="dateTimeOriginal"
