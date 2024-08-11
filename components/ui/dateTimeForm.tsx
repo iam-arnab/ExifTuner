@@ -50,14 +50,24 @@ export default function DateTimeForm({ dataUrl }: DateTimeFormProps) {
                     control={form.control}
                     name="dateTimeOriginal"
                     render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Orginal Date and Time</FormLabel>
-                            <FormControl>
-                                <Input placeholder="" {...field} />
-                            </FormControl>
-                            <FormDescription>Date it was taken</FormDescription>
-                            <FormMessage />
-                        </FormItem>
+                        <>
+                            <p className="text-red-500">
+                                Note: T and Z are required in the format.
+                            </p>
+                            <FormItem>
+                                <FormLabel>Orginal Date and Time</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        placeholder="YYYY-MM-DDTHH:mm:ssZ"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormDescription>
+                                    Date it was taken
+                                </FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        </>
                     )}
                 />
                 <FormField
@@ -67,7 +77,10 @@ export default function DateTimeForm({ dataUrl }: DateTimeFormProps) {
                         <FormItem>
                             <FormLabel>Creation Date</FormLabel>
                             <FormControl>
-                                <Input placeholder="" {...field} />
+                                <Input
+                                    placeholder="YYYY-MM-DDTHH:mm:ssZ"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormDescription>
                                 Date the image was created
