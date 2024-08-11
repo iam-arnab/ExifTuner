@@ -8,7 +8,7 @@ export default function Home() {
             <div className="absolute top-2 right-2">
                 <ModeToggle />
             </div>
-            <div className="flex flex-col items-center justify-center min-h-screen">
+            <div className="m-10 flex flex-col items-center justify-center min-h-screen">
                 <Logo />
                 <ImageForm />
             </div>
