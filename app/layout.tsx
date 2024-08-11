@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Exif Tuner',
-    description: 'An Web app made to view and edit Exif data of images',
+    description: 'An Web app made to modify Exif data of images',
 };
 
 export default function RootLayout({
