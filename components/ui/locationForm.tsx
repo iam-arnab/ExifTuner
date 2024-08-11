@@ -28,8 +28,8 @@ export default function LocationForm({ dataUrl }: LocationFormProps) {
     const form = useForm<z.infer<typeof LocationSchema>>({
         resolver: zodResolver(LocationSchema),
         defaultValues: {
-            latitude: 0,
-            longitude: 0,
+            latitude: undefined,
+            longitude: undefined,
             altitude: 0,
         },
     });
