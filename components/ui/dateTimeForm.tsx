@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { DateTimeSchema } from "@/lib/schema";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { DateTimeSchema } from '@/lib/schema';
+import { z } from 'zod';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
     Form,
     FormControl,
@@ -14,11 +14,11 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { modifyDateTimeData } from "@/lib/modifyExif";
-import fileNameExtract from "@/lib/fileNameExtract";
-import downloadImage from "@/lib/downloadImage";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { modifyDateTimeData } from '@/lib/modifyExif';
+import fileNameExtract from '@/lib/fileNameExtract';
+import downloadImage from '@/lib/downloadImage';
 
 interface DateTimeFormProps {
     dataUrl: string;
@@ -28,8 +28,8 @@ export default function DateTimeForm({ dataUrl }: DateTimeFormProps) {
     const form = useForm<z.infer<typeof DateTimeSchema>>({
         resolver: zodResolver(DateTimeSchema),
         defaultValues: {
-            dateTimeOriginal: "",
-            createDate: "",
+            dateTimeOriginal: '',
+            createDate: '',
         },
     });
 

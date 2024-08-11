@@ -1,1 +1,1 @@
-declare module "piexifjs";
+declare module 'piexifjs';

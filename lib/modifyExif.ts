@@ -1,9 +1,9 @@
-import piexifjs from "piexifjs";
+import piexifjs from 'piexifjs';
 
 function modifyCameraExifData(imageData: string, make: string, model: string) {
     let exifData = piexifjs.load(imageData);
-    exifData["0th"][piexifjs.ImageIFD.Make] = make;
-    exifData["0th"][piexifjs.ImageIFD.Model] = model;
+    exifData['0th'][piexifjs.ImageIFD.Make] = make;
+    exifData['0th'][piexifjs.ImageIFD.Model] = model;
     let exifbytes = piexifjs.dump(exifData);
     let modifiedImage = piexifjs.insert(exifbytes, imageData);
     return modifiedImage;
@@ -19,8 +19,8 @@ function modifyLocationData(
         const lat = coordinates[0];
         const lon = coordinates[1];
 
-        const latRef = lat >= 0 ? "N" : "S";
-        const lonRef = lon >= 0 ? "E" : "W";
+        const latRef = lat >= 0 ? 'N' : 'S';
+        const lonRef = lon >= 0 ? 'E' : 'W';
 
         return {
             latitude: lat,
@@ -50,8 +50,8 @@ function modifyDateTimeData(
     createDate: string
 ) {
     let exifData = piexifjs.load(imageData);
-    exifData["Exif"][piexifjs.ExifIFD.DateTimeOriginal] = dateTimeOriginal;
-    exifData["Exif"][piexifjs.ExifIFD.DateTimeDigitized] = createDate;
+    exifData['Exif'][piexifjs.ExifIFD.DateTimeOriginal] = dateTimeOriginal;
+    exifData['Exif'][piexifjs.ExifIFD.DateTimeDigitized] = createDate;
     let exifbytes = piexifjs.dump(exifData);
     let modifiedImage = piexifjs.insert(exifbytes, imageData);
     return modifiedImage;

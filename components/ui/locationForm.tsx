@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { LocationSchema } from "@/lib/schema";
-import { modifyLocationData } from "@/lib/modifyExif";
-import downloadImage from "@/lib/downloadImage";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { LocationSchema } from '@/lib/schema';
+import { modifyLocationData } from '@/lib/modifyExif';
+import downloadImage from '@/lib/downloadImage';
+import { z } from 'zod';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
     Form,
     FormControl,
@@ -16,9 +16,9 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import fileNameExtract from "@/lib/fileNameExtract";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import fileNameExtract from '@/lib/fileNameExtract';
 
 interface LocationFormProps {
     dataUrl: string;

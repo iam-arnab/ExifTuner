@@ -1,6 +1,6 @@
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import ImageForm from "@/components/ui/imageForm";
-import { Logo } from "@/components/ui/logo";
+import { ModeToggle } from '@/components/ui/mode-toggle';
+import ImageForm from '@/components/ui/imageForm';
+import { Logo } from '@/components/ui/logo';
 
 export default function Home() {
     return (

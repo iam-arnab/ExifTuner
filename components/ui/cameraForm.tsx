@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { CameraSchema } from "@/lib/schema";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { CameraSchema } from '@/lib/schema';
+import { z } from 'zod';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
     Form,
     FormControl,
@@ -14,11 +14,11 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { modifyCameraExifData, modifyLocationData } from "@/lib/modifyExif";
-import downloadImage from "@/lib/downloadImage";
-import fileNameExtract from "@/lib/fileNameExtract";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { modifyCameraExifData, modifyLocationData } from '@/lib/modifyExif';
+import downloadImage from '@/lib/downloadImage';
+import fileNameExtract from '@/lib/fileNameExtract';
 
 interface CameraFormProps {
     dataUrl: string;
@@ -28,8 +28,8 @@ export default function CameraForm({ dataUrl }: CameraFormProps) {
     const form = useForm<z.infer<typeof CameraSchema>>({
         resolver: zodResolver(CameraSchema),
         defaultValues: {
-            make: "",
-            model: "",
+            make: '',
+            model: '',
         },
     });
 

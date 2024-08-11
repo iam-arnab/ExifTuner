@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState, ChangeEvent } from "react";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import DateTimeForm from "@/components/ui/dateTimeForm";
-import LocationForm from "@/components/ui/locationForm";
-import CameraForm from "@/components/ui/cameraForm";
-import Image from "next/image";
+import { useState, ChangeEvent } from 'react';
+import { Input } from '@/components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import DateTimeForm from '@/components/ui/dateTimeForm';
+import LocationForm from '@/components/ui/locationForm';
+import CameraForm from '@/components/ui/cameraForm';
+import Image from 'next/image';
 
 export default function ImageForm() {
     const [image, setImage] = useState<string | null>(null);
