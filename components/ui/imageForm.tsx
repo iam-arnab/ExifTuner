@@ -36,8 +36,8 @@ export default function ImageForm() {
             <div className="m-2">
                 <TabsList>
                     <TabsTrigger value="d&t">Date & Time</TabsTrigger>
-                    <TabsTrigger value="location">Location</TabsTrigger>
-                    <TabsTrigger value="camera">Camera</TabsTrigger>
+                    <TabsTrigger value="location">GPS Info</TabsTrigger>
+                    <TabsTrigger value="camera">Camera Info</TabsTrigger>
                 </TabsList>
                 <TabsContent value="d&t">
                     <DateTimeForm dataUrl={image as string} />
