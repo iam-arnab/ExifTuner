@@ -13,7 +13,7 @@ export function Logo() {
             className="m-10"
             style={{
                 fontFamily: 'monospace',
-                fontSize: '0.47rem',
+                fontSize: '0.45rem',
                 whiteSpace: 'pre',
             }}
         >
