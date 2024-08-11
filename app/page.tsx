@@ -1,5 +1,6 @@
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import ImageForm from "@/components/ui/imageForm";
+import { Logo } from "@/components/ui/logo";
 
 export default function Home() {
     return (
@@ -8,6 +9,7 @@ export default function Home() {
                 <ModeToggle />
             </div>
             <div className="flex items-center justify-center h-screen">
+                <Logo />
                 <ImageForm />
             </div>
         </main>
