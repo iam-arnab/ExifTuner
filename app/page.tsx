@@ -4,11 +4,11 @@ import { Logo } from "@/components/ui/logo";
 
 export default function Home() {
     return (
-        <main className="relative">
+        <main className="relative h-screen overflow-auto">
             <div className="absolute top-2 right-2">
                 <ModeToggle />
             </div>
-            <div className="flex items-center justify-center h-screen">
+            <div className="flex flex-col items-center justify-center min-h-screen">
                 <Logo />
                 <ImageForm />
             </div>
