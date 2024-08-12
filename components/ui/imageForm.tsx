@@ -32,7 +32,7 @@ export default function ImageForm() {
                     className="m-2"
                 />
             )}
-            <Input type="file" onChange={handleChange} />
+            <Input type="file" onChange={handleChange} accept=".jpg, .jpeg" />
             <div className="m-2">
                 <TabsList>
                     <TabsTrigger value="d&t">Date & Time</TabsTrigger>
