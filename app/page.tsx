@@ -23,7 +23,7 @@ export default function Home() {
                 <ImageForm />
                 <p className="mt-20">
                     Made with ❤️ by{' '}
-                    <Link href="https://bio.link/arnab" className="font-bold">
+                    <Link href="https://zytact.in" className="font-bold">
                         Arnab
                     </Link>
                 </p>
