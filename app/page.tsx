@@ -1,9 +1,7 @@
-import { ModeToggle } from '@/components/ui/mode-toggle';
 import ImageForm from '@/components/ui/imageForm';
 import { Logo } from '@/components/ui/logo';
-import Image from 'next/image';
+import { ModeToggle } from '@/components/ui/mode-toggle';
 import Link from 'next/link';
-import Github from '@/public/github.svg';
 
 export default function Home() {
     return (

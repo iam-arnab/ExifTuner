@@ -21,10 +21,10 @@ import downloadImage from '@/lib/downloadImage';
 import fileNameExtract from '@/lib/fileNameExtract';
 
 interface CameraFormProps {
-    dataUrl: string;
+    dataUrls: string[];
 }
 
-export default function CameraForm({ dataUrl }: CameraFormProps) {
+export default function CameraForm({ dataUrls }: CameraFormProps) {
     const form = useForm<z.infer<typeof CameraSchema>>({
         resolver: zodResolver(CameraSchema),
         defaultValues: {
@@ -34,13 +34,14 @@ export default function CameraForm({ dataUrl }: CameraFormProps) {
     });
 
     function onSubmit(values: z.infer<typeof CameraSchema>) {
-        console.log(values);
-        const modifiedImage = modifyCameraExifData(
-            dataUrl,
-            values.make,
-            values.model
-        );
-        downloadImage(modifiedImage, fileNameExtract(dataUrl));
+        dataUrls.forEach((dataUrl) => {
+            const modifiedImage = modifyCameraExifData(
+                dataUrl,
+                values.make,
+                values.model
+            );
+            downloadImage(modifiedImage, fileNameExtract(dataUrl));
+        });
     }
 
     return (

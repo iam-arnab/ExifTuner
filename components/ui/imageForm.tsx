@@ -6,33 +6,43 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import DateTimeForm from '@/components/ui/dateTimeForm';
 import LocationForm from '@/components/ui/locationForm';
 import CameraForm from '@/components/ui/cameraForm';
-import Image from 'next/image';
+import CarouselImages from '@/components/ui/CarouselImages';
 
 export default function ImageForm() {
-    const [image, setImage] = useState<string | null>(null);
+    const [images, setImages] = useState<string[] | null>(null);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(file as File);
-            reader.onload = () => {
-                const dataUrl = reader.result as string;
-                setImage(dataUrl);
-            };
+            const files = Array.from(e.target.files);
+            const arrayOfFiles: string[] = [];
+            const readFilesPromises = files.map((file) => {
+                return new Promise<string>((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result as string);
+                    reader.onerror = reject;
+                });
+            });
+
+            Promise.all(readFilesPromises)
+                .then((fileDataUrls) => {
+                    setImages(fileDataUrls);
+                })
+                .catch((error) => {
+                    console.error('Error reading files: ', error);
+                });
         }
     };
     return (
         <Tabs defaultValue="d&t">
-            {image && (
-                <Image
-                    src={image}
-                    alt="image"
-                    width={300}
-                    height={300}
-                    className="m-2"
-                />
+            {images && images.length > 0 && (
+                <CarouselImages dataUrls={images as string[]} className="m-2" />
             )}
-            <Input type="file" onChange={handleChange} accept=".jpg, .jpeg" />
+            <Input
+                type="file"
+                onChange={handleChange}
+                accept=".jpg, .jpeg"
+                multiple
+            />
             <div className="m-2">
                 <TabsList>
                     <TabsTrigger value="d&t">Date & Time</TabsTrigger>
@@ -40,13 +50,13 @@ export default function ImageForm() {
                     <TabsTrigger value="camera">Camera Info</TabsTrigger>
                 </TabsList>
                 <TabsContent value="d&t">
-                    <DateTimeForm dataUrl={image as string} />
+                    <DateTimeForm dataUrls={images as string[]} />
                 </TabsContent>
                 <TabsContent value="location">
-                    <LocationForm dataUrl={image as string} />
+                    <LocationForm dataUrls={images as string[]} />
                 </TabsContent>
                 <TabsContent value="camera">
-                    <CameraForm dataUrl={image as string} />
+                    <CameraForm dataUrls={images as string[]} />
                 </TabsContent>
             </div>
         </Tabs>

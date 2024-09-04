@@ -21,10 +21,10 @@ import { Input } from '@/components/ui/input';
 import fileNameExtract from '@/lib/fileNameExtract';
 
 interface LocationFormProps {
-    dataUrl: string;
+    dataUrls: string[];
 }
 
-export default function LocationForm({ dataUrl }: LocationFormProps) {
+export default function LocationForm({ dataUrls }: LocationFormProps) {
     const form = useForm<z.infer<typeof LocationSchema>>({
         resolver: zodResolver(LocationSchema),
         defaultValues: {
@@ -35,14 +35,15 @@ export default function LocationForm({ dataUrl }: LocationFormProps) {
     });
 
     function onSubmit(values: z.infer<typeof LocationSchema>) {
-        console.log(values);
-        const modifiedImage = modifyLocationData(
-            dataUrl,
-            values.latitude,
-            values.longitude,
-            values.altitude
-        );
-        downloadImage(modifiedImage, fileNameExtract(dataUrl));
+        dataUrls.forEach((dataUrl) => {
+            const modifiedImage = modifyLocationData(
+                dataUrl,
+                values.latitude,
+                values.longitude,
+                values.altitude
+            );
+            downloadImage(modifiedImage, fileNameExtract(dataUrl));
+        });
     }
 
     return (

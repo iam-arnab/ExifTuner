@@ -21,10 +21,10 @@ import fileNameExtract from '@/lib/fileNameExtract';
 import downloadImage from '@/lib/downloadImage';
 
 interface DateTimeFormProps {
-    dataUrl: string;
+    dataUrls: string[];
 }
 
-export default function DateTimeForm({ dataUrl }: DateTimeFormProps) {
+export default function DateTimeForm({ dataUrls }: DateTimeFormProps) {
     const form = useForm<z.infer<typeof DateTimeSchema>>({
         resolver: zodResolver(DateTimeSchema),
         defaultValues: {
@@ -34,13 +34,15 @@ export default function DateTimeForm({ dataUrl }: DateTimeFormProps) {
     });
 
     function onSubmit(values: z.infer<typeof DateTimeSchema>) {
-        console.log(values);
-        const modifiedImage = modifyDateTimeData(
-            dataUrl,
-            values.dateTimeOriginal,
-            values.createDate
-        );
-        downloadImage(modifiedImage, fileNameExtract(dataUrl));
+        dataUrls.forEach((dataUrl) => {
+            const modifiedImage = modifyDateTimeData(
+                dataUrl,
+                values.dateTimeOriginal,
+                values.createDate
+            );
+
+            downloadImage(modifiedImage, fileNameExtract(dataUrl));
+        });
     }
 
     return (
