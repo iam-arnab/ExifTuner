@@ -44,7 +44,7 @@ export default function ImageForm() {
                 multiple
             />
             <div className="m-2">
-                <TabsList>
+                <TabsList className="w-full">
                     <TabsTrigger value="d&t">Date & Time</TabsTrigger>
                     <TabsTrigger value="location">GPS Info</TabsTrigger>
                     <TabsTrigger value="camera">Camera Info</TabsTrigger>
